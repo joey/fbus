@@ -25,7 +25,7 @@ without the dependencies and one with the dependencies included.
 
 The [Spring Source bundle repository][2] is used for Spring dependencies. The
 (currently unpublished) Cloudera repository is used for Hadoop and its
-dependencies. Specifically, this builds against CDH2u1. Some dependencies are
+dependencies. Specifically, this builds against CDH3u3. Some dependencies are
 pulled from Maven Central, but this will move to the Spring Source repository
 to reduce potential metadata issues.
 
