@@ -11,7 +11,7 @@
 
 		<repository>
 			<id>com.cloudera.repository.public</id>
-			<url>http://repository.cloudera.com/nexus/content/groups/public/</url>
+			<url>https://repository.cloudera.com/artifactory/public</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -158,7 +158,7 @@
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-core</artifactId>
-			<version>0.20.1-CDH.169.88</version>
+			<version>0.20.2-cdh3u3</version>
 		</dependency>
 
 	</dependencies>
