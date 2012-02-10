@@ -29,7 +29,7 @@
 	<!-- Example HDFS destination. -->
 
 	<bean id="hdfsDirectoryDestination" class="com.cloudera.fbus.HDFSDirectoryDestination">
-		<property name="directory" value="/user/${user.name}/output" />
+		<property name="directory" value="/user/#{ systemProperties['user.name'] }/output" />
 	</bean>
 
 	<!-- Channel adapters attach end points to channels. -->
