@@ -18,12 +18,12 @@ import org.springframework.util.Assert;
  */
 public class HDFSDirectoryDestination {
 
-  private static final String tmpSuffix = ".tmp";
-  private static final Logger logger = LoggerFactory
+  protected static final String tmpSuffix = ".tmp";
+  protected static final Logger logger = LoggerFactory
       .getLogger(HDFSDirectoryDestination.class);
 
-  private File directory;
-  private FileSystem fileSystem;
+  protected File directory;
+  protected FileSystem fileSystem;
 
   public HDFSDirectoryDestination() throws IOException {
     fileSystem = FileSystem.get(new Configuration());
@@ -38,12 +38,12 @@ public class HDFSDirectoryDestination {
     Assert.isTrue(file.canRead(), "File " + file
         + " does not exist or is unreadable");
 
-    source = new Path(file.getPath());
-    destinationTmp = new Path(directory.getPath(), source.getName() + tmpSuffix);
-    destination = new Path(directory.getPath(), source.getName());
+    
+    destinationTmp = new Path(directory.getPath(), file.getName() + tmpSuffix);
+    destination = new Path(directory.getPath(), file.getName());
 
     try {
-      fileSystem.copyFromLocalFile(false, source, destinationTmp);
+      copyFromLocalFile(file, destinationTmp);
 
       if (!fileSystem.rename(destinationTmp, destination)) {
         if (!fileSystem.delete(destinationTmp, false)) {
@@ -71,6 +71,12 @@ public class HDFSDirectoryDestination {
       throw DeliveryException.newWith(MessageBuilder.withPayload(file).build(),
           e);
     }
+  }
+
+  protected void copyFromLocalFile(File file, Path destinationTmp) throws IOException {
+	Path source;
+	source = new Path(file.getPath());
+    fileSystem.copyFromLocalFile(false, source, destinationTmp);
   }
 
   public File getDirectory() {

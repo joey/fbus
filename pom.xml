@@ -18,7 +18,7 @@
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
-		</repository>
+		</repository>  
 
 		<repository>
 			<id>com.springsource.repository.bundles.release</id>
@@ -158,7 +158,7 @@
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-core</artifactId>
-			<version>0.20.2-cdh3u3</version>
+			<version>0.20.2-cdh3u3</version> 
 		</dependency>
 
 	</dependencies>
